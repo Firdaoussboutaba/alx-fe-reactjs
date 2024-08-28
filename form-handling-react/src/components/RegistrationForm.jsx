@@ -1,4 +1,3 @@
-// src/components/RegistrationForm.jsx
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
@@ -18,13 +17,11 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic validation to ensure no fields are empty
     if (!formData.username || !formData.email || !formData.password) {
       alert('Please fill in all fields.');
       return;
     }
 
-    // Simulate API call for user registration
     console.log('Form submitted:', formData);
     alert('Registration successful!');
     setFormData({ username: '', email: '', password: '' });
@@ -37,8 +34,8 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={formData.username}
-          onChange={handleChange}
+          value={formData.username}  
+          onChange={handleChange}  
         />
       </div>
       <div>
@@ -46,8 +43,8 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
+          value={formData.email}  
+          onChange={handleChange}  
         />
       </div>
       <div>
@@ -55,8 +52,8 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
-          onChange={handleChange}
+          value={formData.password}  
+          onChange={handleChange}  
         />
       </div>
       <button type="submit">Register</button>
