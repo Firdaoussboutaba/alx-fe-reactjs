@@ -1,30 +1,30 @@
+// src/components/RegistrationForm.jsx
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  // Initialize state with individual fields
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
+  // Handle change for each input
+  const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       alert('Please fill in all fields.');
       return;
     }
-
-    console.log('Form submitted:', formData);
+    // Simulate form submission
+    console.log('Form submitted:', { username, email, password });
     alert('Registration successful!');
-    setFormData({ username: '', email: '', password: '' });
+    setUsername('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -33,27 +33,24 @@ const RegistrationForm = () => {
         <label>Username:</label>
         <input
           type="text"
-          name="username"
-          value={formData.username}  
-          onChange={handleChange}  
+          value={username}
+          onChange={handleUsernameChange}
         />
       </div>
       <div>
         <label>Email:</label>
         <input
           type="email"
-          name="email"
-          value={formData.email}  
-          onChange={handleChange}  
+          value={email}
+          onChange={handleEmailChange}
         />
       </div>
       <div>
         <label>Password:</label>
         <input
           type="password"
-          name="password"
-          value={formData.password}  
-          onChange={handleChange}  
+          value={password}
+          onChange={handlePasswordChange}
         />
       </div>
       <button type="submit">Register</button>
