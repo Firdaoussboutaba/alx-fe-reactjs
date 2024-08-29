@@ -8,11 +8,14 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError('');
+
+    // Basic validation
     if (!username || !email || !password) {
       setError('All fields are required.');
       return;
     }
-    setError('');
+
     // Simulate API call
     console.log('User registered:', { username, email, password });
   };
