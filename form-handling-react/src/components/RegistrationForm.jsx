@@ -10,13 +10,22 @@ const RegistrationForm = () => {
     e.preventDefault();
     setError('');
 
-    // Basic validation
-    if (!username || !email || !password) {
-      setError('All fields are required.');
+    // Validation
+    if (!username) {
+      setError('Username is required.');
+      return;
+    }
+    if (!email) {
+      setError('Email is required.');
+      return;
+    }
+    if (!password) {
+      setError('Password is required.');
       return;
     }
 
-    // Simulate API call
+    // If all fields are valid, clear the error and proceed
+    setError('');
     console.log('User registered:', { username, email, password });
   };
 
