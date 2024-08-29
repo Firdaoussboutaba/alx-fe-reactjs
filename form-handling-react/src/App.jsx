@@ -2,18 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import FormikForm from './components/formikform.js';
-
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-      <h1>User Registration with Formik</h1>
-      <FormikForm />
-    </div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
