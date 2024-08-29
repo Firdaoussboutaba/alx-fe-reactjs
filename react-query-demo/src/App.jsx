@@ -2,20 +2,20 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/formikForm'; 
+import { QueryClient, QueryClientProvider } from 'react-query';
+import PostsComponent from './components/PostsComponent';
+
+const queryClient = new QueryClient();
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
- <div className="App">
-      <h1>User Registration with Controlled Components</h1>
-      <RegistrationForm />
-      <h1>User Registration with Formik</h1>
-      <FormikForm />
-    </div>
 
+<QueryClientProvider client={queryClient}>
+      <PostsComponent />
+    </QueryClientProvider>
 
       <div>
         <a href="https://vitejs.dev" target="_blank">
