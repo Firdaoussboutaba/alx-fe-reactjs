@@ -15,6 +15,7 @@ function App() {
 
       <div className="p-6 bg-blue-500 text-white">
       Hello, Tailwind CSS with React!
+      happy to work with Tailwindcss
     </div>
       <div>
         <a href="https://vitejs.dev" target="_blank">
