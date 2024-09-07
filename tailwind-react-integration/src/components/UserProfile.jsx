@@ -1,5 +1,8 @@
 function UserProfile() {
   return (
+
+    
+
     <div className="user-profile bg-gray-100 p-4 sm:p-8 max-w-xs sm:max-w-sm mx-auto my-20 rounded-lg shadow-lg">
       <img
         src="https://via.placeholder.com/150"
@@ -13,5 +16,16 @@ function UserProfile() {
     </div>
   );
 }
+
+const UserProfile = () => {
+  return (
+    <div className="sm:p-4 md:p-8">
+      {/* Your component content */}
+    </div>
+  );
+};
+
+
+
 
 export default UserProfile;
