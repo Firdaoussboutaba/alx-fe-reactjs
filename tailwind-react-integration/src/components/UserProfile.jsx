@@ -20,7 +20,17 @@ function UserProfile() {
 const UserProfile = () => {
   return (
     <div className="sm:p-4 md:p-8">
-      {/* Your component content */}
+      
+    </div>
+  );
+};
+
+
+const UserProfile = () => {
+  return (
+    <div className="sm:p-4 md:p-8 md:max-w-sm">
+      <h1 className="md:text-xl">User Profile</h1>
+      
     </div>
   );
 };
