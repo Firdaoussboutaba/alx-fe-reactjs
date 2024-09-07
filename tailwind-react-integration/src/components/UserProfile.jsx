@@ -35,6 +35,20 @@ const UserProfile = () => {
   );
 };
 
+const UserProfile = () => {
+  return (
+    <div className="sm:p-4 md:p-8 md:max-w-sm">
+      <h1 className="md:text-xl">User Profile</h1>
+     
+      <img 
+        src="profile-image.jpg" 
+        alt="User Profile"
+        className="sm:w-24 sm:h-24 md:w-36 md:h-36"
+      />
+      
+    </div>
+  );
+};
 
 
 
