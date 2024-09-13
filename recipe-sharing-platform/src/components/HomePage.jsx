@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; 
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
+
     fetch('/data.json')
       .then((response) => response.json())
       .then((data) => setRecipes(data))
@@ -20,9 +22,10 @@ const HomePage = () => {
             <div className="p-4">
               <h2 className="text-xl font-bold">{recipe.title}</h2>
               <p className="text-gray-700 mt-2">{recipe.summary}</p>
-              <a href={`/recipe/${recipe.id}`} className="text-blue-500 hover:underline mt-4 block">
+
+              <Link to={`/recipe/${recipe.id}`} className="text-blue-500 hover:underline">
                 View Recipe
-              </a>
+              </Link>
             </div>
           </div>
         ))}
@@ -32,3 +35,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
