@@ -5,12 +5,18 @@ import './App.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RecipeDetail from './components/RecipeDetail';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+  <div>
+      <h1 className="text-3xl font-bold">Recipe Sharing Platform</h1>
+      <AddRecipeForm />  {/* Render the form */}
+    </div>
+
   <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />

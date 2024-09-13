@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 const RecipeDetail = () => {
   const { id } = useParams(); 
   const [recipe, setRecipe] = useState(null);
-
+  <div>
+  <h1>Recipe Detail Page</h1>
+  <p>Details for recipe with ID: {id}</p>
+</div>
   useEffect(() => {
 
     fetch('/data.json')

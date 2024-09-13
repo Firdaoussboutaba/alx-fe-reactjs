@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
-
+  <div>
+  <h1>Home Page</h1>
+  <p>Welcome to the Recipe Sharing Platform</p>
+</div>
   useEffect(() => {
 
     fetch('/data.json')
