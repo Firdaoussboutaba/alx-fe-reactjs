@@ -1,70 +1,78 @@
-import { useState } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const AddRecipeForm = () => {
  
-  const [title, setTitle] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [steps, setSteps] = useState('');
-  const [error, setError] = useState('');
+  const validationSchema = Yup.object({
+    title: Yup.string().required('Recipe title is required'),
+    ingredients: Yup.string().required('Ingredients are required'),
+    steps: Yup.string().required('Preparation steps are required'),
+  });
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    if (!title || !ingredients || !steps) {
-      setError('All fields are required.');
-      return;
-    }
-    if (ingredients.split(',').length < 2) {
-      setError('Please include at least two ingredients.');
-      return;
-    }
-
-   
-    console.log({ title, ingredients, steps });
-    setTitle('');
-    setIngredients('');
-    setSteps('');
-    setError('');
-  };
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      ingredients: '',
+      steps: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   return (
-    <div className="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Add a New Recipe</h2>
-      {error && <p className="text-red-500">{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-lg mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Add a New Recipe</h1>
+      <form onSubmit={formik.handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="title">Recipe Title</label>
+          <label className="block text-sm font-medium">Recipe Title</label>
           <input
+            name="title"
             type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Enter recipe title"
+            className="mt-1 block w-full border border-gray-300 rounded-md"
+            value={formik.values.title}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.title && formik.errors.title ? (
+            <p className="text-red-500 text-sm">{formik.errors.title}</p>
+          ) : null}
         </div>
+
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="ingredients">Ingredients</label>
+          <label className="block text-sm font-medium">Ingredients</label>
           <textarea
-            id="ingredients"
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="List ingredients separated by commas"
+            name="ingredients"
+            className="mt-1 block w-full border border-gray-300 rounded-md"
+            value={formik.values.ingredients}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.ingredients && formik.errors.ingredients ? (
+            <p className="text-red-500 text-sm">{formik.errors.ingredients}</p>
+          ) : null}
         </div>
+
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="steps">Preparation Steps</label>
+          <label className="block text-sm font-medium">Preparation Steps</label>
           <textarea
-            id="steps"
-            value={steps}
-            onChange={(e) => setSteps(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-md"
-            placeholder="Describe the preparation steps"
+            name="steps"
+            className="mt-1 block w-full border border-gray-300 rounded-md"
+            value={formik.values.steps}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.steps && formik.errors.steps ? (
+            <p className="text-red-500 text-sm">{formik.errors.steps}</p>
+          ) : null}
         </div>
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+
+        <button
+          type="submit"
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+        >
           Submit Recipe
         </button>
       </form>
