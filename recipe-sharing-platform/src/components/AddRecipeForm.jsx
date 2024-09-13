@@ -1,31 +1,23 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import React, { useState } from 'react';
-import { useFormik } from 'formik'; 
-import * as Yup from 'yup'; 
-
-
-
-
 
 const AddRecipeForm = () => {
- 
-  const validationSchema = Yup.object({
-    title: Yup.string().required('Recipe title is required'),
-    ingredients: Yup.string().required('Ingredients are required'),
-    steps: Yup.string().required('Preparation steps are required'),
-  });
-
+  // Setup Formik
   const formik = useFormik({
     initialValues: {
       title: '',
       ingredients: '',
       steps: '',
     },
-    validationSchema: validationSchema,
+    validationSchema: Yup.object({
+      title: Yup.string().required('Recipe title is required'),
+      ingredients: Yup.string().required('Ingredients are required'),
+      steps: Yup.string().required('Preparation steps are required'),
+    }),
     onSubmit: (values) => {
-      console.log(values);
+      console.log('Form data', values);
+      // Process form data here
     },
   });
 
