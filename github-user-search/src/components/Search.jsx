@@ -18,7 +18,7 @@ const Search = () => {
       const data = await fetchUserData(username);  // Fetch user data from GitHub API
       setUserData(data);    // Store the user data if successful
     } catch (error) {
-      setError("Looks like we can't find the user.");  // Handle error case
+      setError("Looks like we cant find the user.");  // Exact message without apostrophe
     } finally {
       setLoading(false);  // Set loading state to false
     }
@@ -38,7 +38,7 @@ const Search = () => {
 
       {loading && <p>Loading...</p>}  {/* Display Loading... when fetching data */}
 
-      {error && <p>{error}</p>}  {/* Display error message if user is not found */}
+      {error && <p>{error}</p>}  {/* Display exact error message: Looks like we cant find the user */}
 
       {userData && (  // Only display user info if data is fetched successfully
         <div>
